@@ -2426,7 +2426,9 @@
                 }
                 
                 loggedInUser = user;
-                localStorage.setItem('cybercore_session', JSON.stringify(user));
+                const sessionData = { ...user };
+                delete sessionData.password;
+                localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
                 updateHeaderAvatar(); 
                 autofillUserForms(); 
                 showUserPanel();
@@ -2651,7 +2653,10 @@
             const localUsers = getLocalUsers();
             const idx = localUsers.findIndex(u => u.id === loggedInUser.id);
             if (idx !== -1) { localUsers[idx] = loggedInUser; saveLocalUsers(localUsers); }
-            localStorage.setItem('cybercore_session', JSON.stringify(loggedInUser));
+const sessionData = { ...loggedInUser };
+delete sessionData.password;
+
+localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
             
             showNotificationModal(currentLang === 'uk' ? "Збережено" : "Saved", currentLang === 'uk' ? "Профіль успішно оновлено." : "Profile parameters successfully synchronized."); 
             toggleProfileEditForm(); 
