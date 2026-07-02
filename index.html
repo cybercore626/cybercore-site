@@ -2441,6 +2441,7 @@
                 const user = users[0];
                 loggedInUser = user;
                 const sessionData = { ...user };
+                delete sessionData.password;
                 localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
                 updateHeaderAvatar(); 
                 autofillUserForms(); 
@@ -2697,6 +2698,7 @@ switchAuthTab('login');
             }
 
             const sessionData = { ...loggedInUser };
+            delete sessionData.password;
             localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
             
             showNotificationModal(currentLang === 'uk' ? "Збережено" : "Saved", currentLang === 'uk' ? "Профіль успішно оновлено!" : "Profile parameters successfully synchronized."); 
