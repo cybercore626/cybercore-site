@@ -34,3 +34,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+	- name: Create config.js
+        run: |
+          echo "const tgToken = '${{ secrets.TG_TOKEN }}';" > config.js
+          echo "const supabaseUrl = '${{ secrets.SUPABASE_URL }}';" >> config.js
+          echo "const supabaseKey = '${{ secrets.SUPABASE_KEY }}';" >> config.js
