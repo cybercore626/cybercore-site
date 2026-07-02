@@ -28,6 +28,14 @@ jobs:
           echo "const CONFIG = { TELEGRAM_TOKEN: '${{ secrets.TG_TOKEN }}', TELEGRAM_CHAT_ID: '${{ secrets.TG_CHAT_ID }}', DB_SECRET_KEY: '${{ secrets.DB_SECRET_KEY }}' };" > config.js
           echo "const supabaseUrl = '${{ secrets.SUPABASE_URL }}';" >> config.js
           echo "const supabaseKey = '${{ secrets.SUPABASE_KEY }}';" >> config.js
+          echo "const SUPABASE_URL = '${{ secrets.SUPABASE_URL }}';" >> config.js
+          echo "const SUPABASE_KEY = '${{ secrets.SUPABASE_KEY }}';" >> config.js
+          echo "CONFIG.SUPABASE_URL = '${{ secrets.SUPABASE_URL }}';" >> config.js
+          echo "CONFIG.SUPABASE_KEY = '${{ secrets.SUPABASE_KEY }}';" >> config.js
+          echo "CONFIG.supabaseUrl = '${{ secrets.SUPABASE_URL }}';" >> config.js
+          echo "CONFIG.supabaseKey = '${{ secrets.SUPABASE_KEY }}';" >> config.js
+          echo "window.supabaseUrl = '${{ secrets.SUPABASE_URL }}';" >> config.js
+          echo "window.supabaseKey = '${{ secrets.SUPABASE_KEY }}';" >> config.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
