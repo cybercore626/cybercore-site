@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://cybercore626.github.io/cybercore-site/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="CYBERCORE // Студія преміальної веб-інженерії">
-    <meta property="og:description" content="Сучасний веб-проєкт CYBERCORE. Безпечне шифрування даних та миттєва обробка заявок.">
+    <meta property="og:description" content="Я програмую на замовлення надшвидкі, адаптивні веб-сайти з бездоганною безпекою, складними інтеграціями та преміальним обслуговуванням">
     <meta property="og:image" content="https://cybercore626.github.io/cybercore-site/logo.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +27,7 @@
     <script src="config.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
         tailwind.config = {
@@ -346,9 +347,9 @@
                 <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto" data-i18n="about-subtitle">Філософія ручної роботи в синергії з технологіями майбутнього.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
                 
-                <div class="lg:col-span-7 space-y-4 sm:space-y-6 reveal-element text-gray-400 leading-relaxed text-sm sm:text-base">
+                <div class="md:col-span-7 space-y-4 sm:space-y-6 reveal-element text-gray-400 leading-relaxed text-sm sm:text-base">
                     <h3 class="font-display font-bold text-xl sm:text-3xl text-white mb-2 sm:mb-4" data-i18n="about-heading">
                         Привіт! Я Влад — засновник та розробник CYBERCORE.
                     </h3>
@@ -365,18 +366,21 @@
                         Сучасний програміст має працювати в синергії з Штучним Інтелектом (AI), адже розробники, які ігнорують нейромережі, швидко втратять актуальність і стануть нікому не потрібними. Я використовую передові нейромережеві інструменти для автоматизації рутини, що дозволяє мені фокусуватися на складній бізнес-логиці, кастомному дизайні та безпеці вашого сайту.
                     </p>
 
-                    <div class="p-4 sm:p-6 rounded-2xl glass-panel border border-white/5 inline-flex items-center gap-4 hover:border-brand-accentCyan/30 transition-all duration-300 group max-w-full">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-accentPurple/10 flex items-center justify-center border border-brand-accentPurple/20 text-brand-accentPurple text-lg sm:text-xl flex-shrink-0">
+                    <div onclick="openDiplomaModal()" class="p-4 sm:p-6 rounded-2xl glass-panel border border-brand-accentCyan/20 hover:border-brand-accentCyan inline-flex items-center gap-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,254,0.25)] group max-w-full cursor-pointer select-none active:scale-95">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-accentCyan/10 flex items-center justify-center border border-brand-accentCyan/20 text-brand-accentCyan text-lg sm:text-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
                         <div class="min-w-0">
                             <span class="block text-white font-semibold text-xs sm:text-sm truncate" data-i18n="diploma-title">Бакалавр Комп'ютерних наук</span>
-                            <span class="block text-gray-500 text-[11px] sm:text-xs truncate" data-i18n="diploma-desc">Повний скан диплому буде додано згодом</span>
+                            <span class="block text-brand-accentCyan font-bold text-[11px] sm:text-xs animate-pulse flex items-center gap-1.5">
+                                <span data-i18n="diploma-desc">Натисніть, щоб переглянути скан</span> 
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 flex justify-center reveal-element">
+                <div class="md:col-span-5 flex justify-center reveal-element">
                     <div class="relative w-full max-w-[320px] sm:max-w-[380px] aspect-[9/16] rounded-3xl overflow-hidden glass-panel border border-white/10 group hover:border-brand-accentCyan/30 transition-all duration-500 shadow-2xl">
                         <img id="profile-img" src="IMG_3613.PNG" alt="Влад - CYBERCORE" class="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" onerror="handleImageError()">
                         <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
@@ -1461,7 +1465,7 @@
                 "about-text-2": "My core philosophy is building premium digital assets using clean code that runs seamlessly. I strictly and categorically do not use website builders (like Tilda or Wix) and outdated CMS systems (WordPress). Building on web builders compromises business scalability, loads heavy \"bloated\" code, and forces you to pay constant monthly subscription rents. Furthermore, standard builder templates make your brand anonymous and identical to thousands of competitors.",
                 "about-text-3": "A modern developer must work in synergy with Artificial Intelligence (AI) — those who ignore neural networks will inevitably lose relevance and become useless. I leverage advanced AI systems to automate routine tasks, which allows me to invest 100% of my time into complex business logic, unique visual designs, and bulletproof security.",
                 "diploma-title": "Bachelor of Computer Science",
-                "diploma-desc": "Scan of academic diploma will be added soon",
+                "diploma-desc": "Click to view the scan",
                 "about-card-title": "Bespoke Web Dev A to Z",
                 "niches-title": "Target niches I serve",
                 "niches-subtitle": "Developing custom high-performance assets ready to generate profit.",
@@ -1885,6 +1889,13 @@
         function closePrivacyModal() {
             document.getElementById('privacy_modal').classList.add('opacity-0', 'pointer-events-none');
         }
+        function openDiplomaModal() {
+            document.getElementById('diploma_modal').classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeDiplomaModal() {
+            document.getElementById('diploma_modal').classList.add('opacity-0', 'pointer-events-none');
+        }
     </script>
 <script>
         let scene, camera, renderer, particles, particleMaterial;
@@ -2048,6 +2059,9 @@
         const TELEGRAM_CHAT_ID = CONFIG.TELEGRAM_CHAT_ID;
         const MONOBANK_JAR_LINK = 'https://send.monobank.ua/jar/29brtfMSf9';
         const USDT_TRC20_WALLET = 'TL9vFXKBs4nLeGFNZKuC1gL9rWkUzn7Ehh';
+
+        // 🔗 Ініціалізація підключення до хмари Supabase
+        const supabaseClient = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
 
         let currentAuthTab = 'login';
         let loggedInUser = null;
@@ -2264,37 +2278,22 @@
             }
         }
 
-        function getLocalUsers() {
-            let encryptedData = localStorage.getItem('cybercore_users_db_enc');
-            
-            // Якщо зашифрованої бази ще немає, створюємо її, шифруємо і кладемо в пам'ять
-            if (!encryptedData) {
-                const initialDB = [
-                    { id: "usr_1", name: "Влад (Admin)", email: "cybercore626@gmail.com", contact: "@CYBERCOR_1", password: "GasAdmin.5091R", role: "admin", projects: [] },
-                    { id: "usr_2", name: "Михайло Сергієнко", email: "client@gmail.com", contact: "+380671112233", password: "password123", role: "client", projects: [
-                        { url: "https://beauty-luxe.com.ua", tariff: "support", status: "active", start_date: "2026-05-15", end_date: "2027-05-15" },
-                        { url: "https://premium-barber.com", tariff: "premium", status: "active", start_date: "2026-06-20", end_date: "" }
-                    ]}
-                ];
-                saveLocalUsers(initialDB);
-                return initialDB;
+        // 🚨 Асинхронне видалення акаунта клієнта безпосередньо з хмари Supabase
+        async function deleteAccountAdmin() {
+            if (!adminSelectedUser) return;
+            const confirmMsg = currentLang === 'uk' ? `🚨 Ви впевнені, що хочете видалити акаунт користувача ${adminSelectedUser.name}?` : `🚨 Are you absolutely sure to delete user account ${adminSelectedUser.name}?`;
+            if (confirm(confirmMsg)) {
+                const { error } = await supabaseClient.from('users').delete().eq('id', adminSelectedUser.id);
+                if (error) {
+                    console.error(error);
+                    showNotificationModal("Error", "Не вдалося видалити користувача", true);
+                    return;
+                }
+                showNotificationModal(currentLang === 'uk' ? "Акаунт видалено" : "Purged Account", currentLang === 'uk' ? "Користувача успішно стерто із бази даних Supabase." : "Successfully erased from memory bank.");
+                document.getElementById('admin_manage_section').classList.add('hidden');
+                document.getElementById('admin_user_select').value = '';
+                await refreshAdminUserList();
             }
-            
-            // Розшифровуємо базу даних за допомогою нашого секретного ключа
-            try {
-                const bytes = CryptoJS.AES.decrypt(encryptedData, CONFIG.DB_SECRET_KEY);
-                const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-                return JSON.parse(decryptedText);
-            } catch (e) {
-                console.error("Помилка доступу до бази даних або невірний ключ шифрування");
-                return [];
-            }
-        }
-        
-        function saveLocalUsers(users) { 
-            // Шифруємо масив користувачів в AES-строку перед збереженням у браузері
-            const encryptedString = CryptoJS.AES.encrypt(JSON.stringify(users), CONFIG.DB_SECRET_KEY).toString();
-            localStorage.setItem('cybercore_users_db_enc', encryptedString); 
         }
 
         function autofillUserForms() {
@@ -2402,10 +2401,10 @@
             });
         });
 
-        document.getElementById('auth_form').addEventListener('submit', function(e) {
+        // 🔐 ГЛОБАЛЬНА АВТОРИЗАЦІЯ ТА РЕЄСТРАЦІЯ ЧЕРЕЗ SUPABASE
+        document.getElementById('auth_form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const emailInput = document.getElementById('auth_email').value.trim();
-            const localUsers = getLocalUsers();
             let hasError = false;
 
             if(!emailInput) {
@@ -2427,19 +2426,21 @@
 
                 if (hasError) return;
 
-                const user = localUsers.find(u => u.email.toLowerCase() === email && u.password === loginPassword);
-                if (!user) { 
-                    showNotificationModal(
-                        currentLang === 'uk' ? "Помилка входу" : "Login Error", 
-                        currentLang === 'uk' ? "Невірна пошта або пароль!" : "Invalid email or password!", 
-                        true
-                    ); 
-                    return; 
-                }
+                // Шукаємо користувача безпосередньо в глобальній хмарі Supabase
+                const { data: users, error } = await supabaseClient.from('users').select('*').eq('email', email).eq('password', loginPassword);
                 
+                if (error || !users || users.length === 0) {
+    showNotificationModal(
+        currentLang === 'uk' ? "Помилка входу" : "Login Error",
+        currentLang === 'uk' ? "Невірний логін або пароль!" : "Invalid email or password!",
+        true
+    );
+    return;
+}
+                
+                const user = users[0];
                 loggedInUser = user;
                 const sessionData = { ...user };
-                delete sessionData.password;
                 localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
                 updateHeaderAvatar(); 
                 autofillUserForms(); 
@@ -2478,22 +2479,39 @@
 
                 if (hasError) return;
 
-                if (localUsers.some(u => u.email.toLowerCase() === email)) { 
-                    showNotificationModal(currentLang === 'uk' ? "Помилка" : "Error", currentLang === 'uk' ? "Цей Email вже використовується!" : "This Email is already registered!", true); 
+                // Перевіряємо в хмарі, чи немає вже користувача з таким email
+                const { data: existingUsers } = await supabaseClient.from('users').select('id').eq('email', email);
+                if (existingUsers && existingUsers.length > 0) { 
+                    showNotificationModal(currentLang === 'uk' ? "Помилка" : "Error", currentLang === 'uk' ? "Цей Email вже зареєстровано глобально!" : "This Email is already registered!", true); 
                     return; 
                 }
 
                 const newUser = {
                     id: 'user-' + Math.random().toString(36).substr(2, 9), 
-                    name, email, password: regPassword, contact, avatar: '',
+                    name, 
+                    email, 
+                    password: regPassword, 
+                    contact, 
+                    avatar: '',
                     projects: website ? [{ id: 'proj-' + Math.random().toString(36).substr(2, 9), url: website, tariff: 'none', status: 'none', start_date: '', end_date: '' }] : [],
-                    role: 'user', created_at: new Date().toISOString()
+                    role: 'user'
                 };
-                localUsers.push(newUser); 
-                saveLocalUsers(localUsers);
-                
-                showNotificationModal(currentLang === 'uk' ? "Успіх!" : "Success!", currentLang === 'uk' ? "Акаунт створено. Тепер авторизуйтесь." : "Account created. Please log in."); 
-                switchAuthTab('login');
+
+                // Записуємо нового користувача в хмару Supabase
+const { error: insertError } = await supabaseClient.from('users').insert([newUser]);
+if (insertError) {
+    showNotificationModal("Error", "Не вдалося завершити реєстрацію. Спробуйте ще раз пізніше.", true);
+    return;
+}
+
+// 🎉 Переконайся, що тут усе чітко по поличках:
+showNotificationModal(
+    currentLang === 'uk' ? "Успіх!" : "Success!",
+    currentLang === 'uk' ? "Реєстрація пройшла успішно! Тепер ви можете увійти у свій акаунт." : "Account created globally. Please log in.",
+    false
+);
+
+switchAuthTab('login');
 
             } else if (currentAuthTab === 'forgot') {
                 const newPassword = document.getElementById('auth_new_password').value.trim();
@@ -2509,12 +2527,13 @@
 
                 if (hasError) return;
 
-                const found = localUsers.find(u => u.email.toLowerCase() === email);
-                if (!found) { 
-                    showNotificationModal(currentLang === 'uk' ? "Помилка" : "Error", currentLang === 'uk' ? "Користувача з такою поштою не знайдено!" : "User with this email not found!", true); 
+                const { data: checkUser } = await supabaseClient.from('users').select('*').eq('email', email);
+                if (!checkUser || checkUser.length === 0) { 
+                    showNotificationModal(currentLang === 'uk' ? "Помилка" : "Error", currentLang === 'uk' ? "Користувача з такою поштою немає в системі!" : "User with this email not found!", true); 
                     return; 
                 }
 
+                const found = checkUser[0];
                 const safeNewPass = escapeHTML(newPassword);
                 const telegramMessage = `<b>🔑 ЗАПИТ НА ВІДНОВЛЕННЯ ПАРОЛЮ 🔑</b>\n\n<b>👤 Клієнт:</b> ${escapeHTML(found.name)}\n<b>📧 Email:</b> ${escapeHTML(found.email)}\n<b>🆕 Бажаний пароль:</b> <code>${safeNewPass}</code>`;
                 
@@ -2633,7 +2652,8 @@
             renderEditWebsitesList(); 
         }
 
-        document.getElementById('edit_profile_form').addEventListener('submit', function(e) {
+        // 🔄 СИНХРОНІЗАЦІЯ ОНОВЛЕНЬ КЛІЄНТСЬКОГО ПРОФІЛЮ З ХМАРОЮ
+        document.getElementById('edit_profile_form').addEventListener('submit', async function(e) {
             e.preventDefault();
             let passError = false;
             const newPass = document.getElementById('cabinet_new_password').value.trim();
@@ -2662,15 +2682,24 @@
             loggedInUser.projects = tempEditProjects;
             if(newPass) loggedInUser.password = newPass;
             
-            const localUsers = getLocalUsers();
-            const idx = localUsers.findIndex(u => u.id === loggedInUser.id);
-            if (idx !== -1) { localUsers[idx] = loggedInUser; saveLocalUsers(localUsers); }
-const sessionData = { ...loggedInUser };
-delete sessionData.password;
+            // Оновлюємо рядок користувача у віддаленій таблиці Supabase
+            const { error } = await supabaseClient.from('users').update({
+                name: loggedInUser.name,
+                contact: loggedInUser.contact,
+                projects: loggedInUser.projects,
+                password: loggedInUser.password,
+                avatar: loggedInUser.avatar
+            }).eq('id', loggedInUser.id);
 
-localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
+            if (error) {
+                showNotificationModal("Error", "Не вдалося зберегти зміни в хмарі", true);
+                return;
+            }
+
+            const sessionData = { ...loggedInUser };
+            localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
             
-            showNotificationModal(currentLang === 'uk' ? "Збережено" : "Saved", currentLang === 'uk' ? "Профіль успішно оновлено." : "Profile parameters successfully synchronized."); 
+            showNotificationModal(currentLang === 'uk' ? "Збережено" : "Saved", currentLang === 'uk' ? "Профіль успішно оновлено!" : "Profile parameters successfully synchronized."); 
             toggleProfileEditForm(); 
             updateHeaderAvatar(); 
             showUserPanel();
@@ -2769,8 +2798,14 @@ localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
         // --- АДМІНІСТРАТИВНА ПАНЕЛЬ УПРАВЛІННЯ КЛІЄНТАМИ ---
         let adminUsersCache = []; let adminSelectedUser = null;
 
-        function refreshAdminUserList() {
-            adminUsersCache = getLocalUsers();
+        async function refreshAdminUserList() {
+            // Витягуємо весь список клієнтів у реальному часі прямо з хмари Supabase
+            const { data: allUsers, error } = await supabaseClient.from('users').select('*');
+            if (error) {
+                console.error(error);
+                return;
+            }
+            adminUsersCache = allUsers || [];
             const select = document.getElementById('admin_user_select');
             if(!select) return;
             select.innerHTML = '<option value="">Оберіть користувача з бази...</option>';
@@ -2923,21 +2958,43 @@ localStorage.setItem('cybercore_session', JSON.stringify(sessionData));
             renderAdminProjectsFormList(); 
         }
 
-        function saveAdminChanges() {
+        async function saveAdminChanges() {
             adminSelectedUser.name = document.getElementById('admin_user_name_input').value.trim();
             adminSelectedUser.contact = document.getElementById('admin_user_contact_input').value.trim();
             adminSelectedUser.password = document.getElementById('admin_user_password_input').value.trim();
             
-            const localUsers = getLocalUsers();
-            const idx = localUsers.findIndex(u => u.id === adminSelectedUser.id);
-            if (idx !== -1) { localUsers[idx] = adminSelectedUser; saveLocalUsers(localUsers); }
-            showNotificationModal(currentLang === 'uk' ? "Збережено!" : "Database Updated!", currentLang === 'uk' ? "Дані користувача, аватар та дати успішно оновлено." : "Client records successfully committed."); 
-            refreshAdminUserList();
+            // Записуємо адмінські правки тарифів та дат прямо у віддалену базу даних
+            const { error } = await supabaseClient.from('users').update({
+                name: adminSelectedUser.name,
+                contact: adminSelectedUser.contact,
+                password: adminSelectedUser.password,
+                projects: adminSelectedUser.projects,
+                avatar: adminSelectedUser.avatar
+            }).eq('id', adminSelectedUser.id);
+
+            if (error) {
+                showNotificationModal("Error", "Помилка оновлення бази даних", true);
+                return;
+            }
+
+            showNotificationModal(currentLang === 'uk' ? "Збережено!" : "Database Updated!", currentLang === 'uk' ? "Дані користувача, аватари та дати успішно синхронізовано з хмарою." : "Client records successfully committed."); 
+            await refreshAdminUserList();
         }
 
         function updateAdminUserInfo(field, val) {
             if (adminSelectedUser) { adminSelectedUser[field] = val.trim(); }
         }
     </script>
-</body>
+    <div id="diploma_modal" class="fixed inset-0 z-[260] flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-panel max-w-md w-full p-2 rounded-3xl border border-brand-accentCyan/40 shadow-[0_0_30px_rgba(0,242,254,0.25)] relative max-h-[90vh] flex flex-col items-center overflow-hidden transition-all duration-500 hover:border-brand-accentPurple hover:shadow-[0_0_40px_rgba(138,43,226,0.35)] group">
+            
+            <button onclick="closeDiplomaModal()" class="absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white hover:bg-brand-accentCyan hover:text-brand-dark transition-all duration-200 text-sm focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <img src="diploma.jpg" alt="Диплом Бакалавра Влад Мельничук" class="max-w-full max-h-[85vh] rounded-2xl object-contain opacity-95 transition-transform duration-700 group-hover:scale-[1.01]">
+            
+        </div>
+    </div>
+    </body>
 </html>
